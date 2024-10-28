@@ -40,6 +40,12 @@ jobs:
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
           projectBaseDir: .
 
+      - name: Upload test coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coverage/lcov.info
+
       - name: Run ESLint
         run: |
           npx eslint . --fix
