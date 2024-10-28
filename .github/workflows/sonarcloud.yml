@@ -20,6 +20,7 @@
 #
 # Consultez notre documentation (https://docs.sonarcloud.io/getting-started/github/)
 # ou contactez notre forum communautaire si vous avez besoin d'aide (https://community.sonarsource.com/c/help/sc/9).
+
 name: SonarCloud analysis
 
 on:
