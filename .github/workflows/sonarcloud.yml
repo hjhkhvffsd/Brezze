@@ -1,4 +1,4 @@
-name: SonarCloud analysis
+name: SonarCloud and Lint Analysis
 
 on:
   push:
@@ -8,10 +8,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  pull-requests: read 
+  pull-requests: read
 
 jobs:
   analysis:
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -39,8 +40,19 @@ jobs:
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
           projectBaseDir: .
 
-      - name: Upload test coverage
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-report
-          path: coverage/lcov.info
+      - name: Run ESLint
+        run: |
+          npx eslint . --fix
+
+      - name: Run Stylelint
+        run: |
+          npx stylelint "**/*.css" --fix
+
+      - name: Commit and Push changes
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add .
+          git commit -m "Auto-fix lint issues"
+          git push origin ${{ github.head_ref }}
