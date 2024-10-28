@@ -1,26 +1,3 @@
-# Ce workflow utilise des actions non certifiées par GitHub.
-# Elles sont fournies par un tiers et régies par des conditions d'utilisation, une politique de confidentialité et une documentation d'assistance séparées.
-# Ce workflow déclenche une analyse SonarCloud de votre code et remplit les alertes de numérisation du code GitHub avec les vulnérabilités trouvées.
-# Gratuit pour les projets open source.
-# 
-# Étapes pour configurer SonarCloud :
-# 1. Connectez-vous à SonarCloud.io avec votre compte GitHub.
-# 2. Importez votre projet sur SonarCloud.
-#    - Ajoutez d'abord votre organisation GitHub, puis ajoutez votre référentiel en tant que nouveau projet.
-#    - Notez que de nombreux langages sont éligibles pour l'analyse automatique,
-#      ce qui signifie que l'analyse démarrera automatiquement sans nécessiter la configuration de GitHub Actions.
-#    - Ce comportement peut être modifié dans Administration > Méthode d'analyse.
-#
-# 3. Suivez le tutoriel intégré de SonarCloud.
-#    - a. Copiez/collez la clé du projet et la clé de l'organisation dans le paramètre args ci-dessous
-#         (Vous trouverez cette information dans SonarCloud. Cliquez sur "Information" en bas à gauche).
-#    - b. Générez un nouveau jeton et ajoutez-le aux secrets de votre dépôt GitHub en utilisant le nom SONAR_TOKEN
-#         (Sur SonarCloud, cliquez sur votre avatar en haut à droite > Mon compte > Sécurité
-#          ou allez directement sur https://sonarcloud.io/account/security/).
-#
-# Consultez notre documentation (https://docs.sonarcloud.io/getting-started/github/)
-# ou contactez notre forum communautaire si vous avez besoin d'aide (https://community.sonarsource.com/c/help/sc/9).
-
 name: SonarCloud analysis
 
 on:
@@ -31,14 +8,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+  pull-requests: read 
 
 jobs:
   analysis:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -51,7 +28,7 @@ jobs:
       - name: Analyze with SonarCloud
         uses: SonarSource/sonarcloud-github-action@v2.2.0
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
             -Dsonar.projectKey=your_project_key
