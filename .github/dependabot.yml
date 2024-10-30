@@ -1,29 +1,11 @@
-# Configuration de Dependabot pour les mises à jour de version.
-# Consultez la documentation pour toutes les options de configuration :
+ # To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
 updates:
-  # Configuration pour l'écosystème npm
-  - package-ecosystem: "npm" # Écosystème de package
-    directory: "/" # Emplacement du fichier package.json
-    schedule:
-      interval: "weekly" # Fréquence des mises à jour (daily, weekly, monthly)
-
-  # Configuration pour l'écosystème pip (Python)
-  - package-ecosystem: "pip" # Écosystème de package
-    directory: "/" # Emplacement du fichier requirements.txt
-    schedule:
-      interval: "weekly"
-
-  # Configuration pour l'écosystème Maven (Java)
-  - package-ecosystem: "maven" # Écosystème de package
-    directory: "/" # Emplacement du fichier pom.xml
-    schedule:
-      interval: "weekly"
-
-  # Configuration pour l'écosystème RubyGems (Ruby)
-  - package-ecosystem: "rubygems" # Écosystème de package
-    directory: "/" # Emplacement du fichier Gemfile
+  - package-ecosystem: "" # See documentation for possible values
+    directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
