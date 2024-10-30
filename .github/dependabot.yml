@@ -1,30 +1,29 @@
-# Pour commencer avec les mises à jour de version de Dependabot, vous devez spécifier quels
-# écosystèmes de packages mettre à jour et où se trouvent les manifestes de packages.
+# Configuration de Dependabot pour les mises à jour de version.
 # Consultez la documentation pour toutes les options de configuration :
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
 updates:
-  # Exemple pour npm
-  - package-ecosystem: "npm" # Écosystème de packages pour JavaScript
-    directory: "/" # Emplacement des manifestes de packages (package.json)
+  # Configuration pour l'écosystème npm
+  - package-ecosystem: "npm" # Écosystème de package
+    directory: "/" # Emplacement du fichier package.json
     schedule:
-      interval: "weekly" # Intervalle de mise à jour (daily, weekly, monthly)
+      interval: "weekly" # Fréquence des mises à jour (daily, weekly, monthly)
 
-  # Exemple pour pip
-  - package-ecosystem: "pip" # Écosystème de packages pour Python
-    directory: "/" # Emplacement des manifestes de packages (requirements.txt)
+  # Configuration pour l'écosystème pip (Python)
+  - package-ecosystem: "pip" # Écosystème de package
+    directory: "/" # Emplacement du fichier requirements.txt
     schedule:
       interval: "weekly"
 
-  # Exemple pour Maven
-  - package-ecosystem: "maven" # Écosystème de packages pour Java
+  # Configuration pour l'écosystème Maven (Java)
+  - package-ecosystem: "maven" # Écosystème de package
     directory: "/" # Emplacement du fichier pom.xml
     schedule:
       interval: "weekly"
 
-  # Exemple pour Ruby
-  - package-ecosystem: "rubygems" # Écosystème de packages pour Ruby
+  # Configuration pour l'écosystème RubyGems (Ruby)
+  - package-ecosystem: "rubygems" # Écosystème de package
     directory: "/" # Emplacement du fichier Gemfile
     schedule:
       interval: "weekly"
